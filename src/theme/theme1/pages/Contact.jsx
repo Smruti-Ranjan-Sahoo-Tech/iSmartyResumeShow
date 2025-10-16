@@ -1,6 +1,7 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 import { FaEnvelope } from 'react-icons/fa'
+import BlankState from '../components/BlankState';
 
 const Contact = () => {
   const contactData = useSelector(state => state.api.data?.contact)
@@ -19,18 +20,20 @@ const Contact = () => {
         </p>
 
         {/* Email Box */}
-        <a
-          href={`mailto:${contactData?.email}`}
-          className="inline-flex flex-col md:flex-row items-center justify-center gap-2 md:gap-3 text-base sm:text-lg md:text-xl font-medium px-4 sm:px-6 md:px-8 py-2 sm:py-3 md:py-4 rounded-full 
-                     bg-gradient-to-r from-purple-500 to-blue-500 text-white 
-                     shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300 w-full sm:w-auto"
-        >
-          <FaEnvelope className="text-xl md:text-2xl" />
-          {contactData?.email || "Loading..."}
-        </a>
+        {contactData?.email ? (
+          <a
+            href={`mailto:${contactData.email}`}
+            className="inline-flex flex-col md:flex-row items-center justify-center gap-2 md:gap-3 text-base sm:text-lg md:text-xl font-medium px-4 sm:px-6 md:px-8 py-2 sm:py-3 md:py-4 rounded-full bg-gradient-to-r from-purple-500 to-blue-500 text-white shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300 w-full sm:w-auto"
+          >
+            <FaEnvelope className="text-xl md:text-2xl" />
+            {contactData.email}
+          </a>
+        ) : (
+          <BlankState headline="No contact email" message="Add your email to let people reach out to you." />
+        )}
 
         {/* Social Media Links */}
-        {socialMedias.length > 0 && (
+        {Array.isArray(socialMedias) && socialMedias.length > 0 ? (
           <div className="mt-8 flex flex-wrap justify-center gap-4">
             {socialMedias.map(social => (
               <a
@@ -49,6 +52,8 @@ const Contact = () => {
               </a>
             ))}
           </div>
+        ) : (
+          <BlankState headline="No social links" message="Add your social media profiles to connect with others." />
         )}
       </div>
     </section>

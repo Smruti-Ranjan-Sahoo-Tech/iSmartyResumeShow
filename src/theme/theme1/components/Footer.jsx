@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom'
 
 const Footer = () => {
   const apiData = useSelector(state => state.api.data)
-  const {userId} = useParams()
+  const { userId } = useParams()
   const contactData = apiData?.contact || null
   const footerBrand = apiData?.hero?.name?.split(' ')[0] || "Portfolio"
   const footerIcons = Array.isArray(contactData?.socialMedias)
@@ -14,7 +14,7 @@ const Footer = () => {
   const phone = contactData?.phone || null
   const email = contactData?.email || null
 
-  const footerLinks =  [
+  const footerLinks = [
     { name: "Home", href: `/${userId}` },
     { name: "About", href: `/${userId}/about` },
     { name: "Tech Stack", href: `/${userId}/tech-stack` },
@@ -63,7 +63,7 @@ const Footer = () => {
             <ul className="flex gap-4">
               {footerIcons.map((icon, idx) => (
                 <li key={icon._id || idx}>
-                  <a href={icon.your_link} target="_blank" rel="noreferrer" className="hover:opacity-75 transition">
+                  <a href={icon.your_Link} target="_blank" rel="noreferrer" className="hover:opacity-75 transition">
                     <img className="size-8 rounded-full" src={icon.icon} alt={icon.name} />
                   </a>
                 </li>
@@ -88,7 +88,7 @@ const Footer = () => {
           {/* Credit */}
           <p className="text-center text-gray-500 dark:text-gray-400 text-sm">
             Designed and built by{" "}
-            <a href="#" className="text-purple-600 dark:text-purple-400 font-medium hover:underline">iSmartFolio</a> with{" "}
+            <a href="https://ismartfolio.netlify.app/" className="text-purple-600 dark:text-purple-400 font-medium hover:underline">iSmartFolio</a> with{" "}
             <span className="text-pink-500 dark:text-pink-400 font-medium">❤️ Coffee</span>
           </p>
         </div>

@@ -27,7 +27,7 @@ const Nav = () => {
 
   return (
   <header className='sticky top-0 z-50 shadow-md
-    dark:shadow dark:shadow-blue-50 
+    dark:shadow dark:shadow-blue-50/20
     bg-white/90 dark:bg-gray-900/90'>
       <nav className="
         mx-auto max-w-5xl flex items-center justify-between px-4 py-3

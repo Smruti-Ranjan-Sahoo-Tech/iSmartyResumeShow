@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const API = async (location) => {
-  const url = `https://ismartfolioapi.onrender.com/${encodeURIComponent(location)}`;
+  const url = `https://ismartfolioapi.onrender.com/api/client/${encodeURIComponent(location)}`;
   try {
     const response = await axios.get(url, { timeout: 10000 });
     return response?.data?.data ?? null;
